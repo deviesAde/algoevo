@@ -1,0 +1,235 @@
+[
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.graph_objects",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.graph_objects",
+        "description": "plotly.graph_objects",
+        "detail": "plotly.graph_objects",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "fitness",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def fitness(chrom, weights, profits, capacity):\n    total_w = np.sum(chrom * weights)\n    total_p = np.sum(chrom * profits)\n    if total_w <= capacity:\n        return total_p\n    else:\n        return 0\ndef init_population(n_items):\n    return np.random.randint(0, 2, size=(POP_SIZE, n_items))\ndef tournament_selection(pop, fit_vals):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "init_population",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def init_population(n_items):\n    return np.random.randint(0, 2, size=(POP_SIZE, n_items))\ndef tournament_selection(pop, fit_vals):\n    i, j = np.random.choice(len(pop), 2, replace=False)\n    return pop[i] if fit_vals[i] > fit_vals[j] else pop[j]\ndef crossover(p1, p2):\n    if np.random.rand() < CROSSOVER_RATE:\n        point = np.random.randint(1, len(p1))\n        return np.concatenate([p1[:point], p2[point:]]), \\\n               np.concatenate([p2[:point], p1[point:]])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tournament_selection",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def tournament_selection(pop, fit_vals):\n    i, j = np.random.choice(len(pop), 2, replace=False)\n    return pop[i] if fit_vals[i] > fit_vals[j] else pop[j]\ndef crossover(p1, p2):\n    if np.random.rand() < CROSSOVER_RATE:\n        point = np.random.randint(1, len(p1))\n        return np.concatenate([p1[:point], p2[point:]]), \\\n               np.concatenate([p2[:point], p1[point:]])\n    return p1.copy(), p2.copy()\ndef mutation(ch):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "crossover",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def crossover(p1, p2):\n    if np.random.rand() < CROSSOVER_RATE:\n        point = np.random.randint(1, len(p1))\n        return np.concatenate([p1[:point], p2[point:]]), \\\n               np.concatenate([p2[:point], p1[point:]])\n    return p1.copy(), p2.copy()\ndef mutation(ch):\n    for i in range(len(ch)):\n        if np.random.rand() < MUTATION_RATE:\n            ch[i] = 1 - ch[i]",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "mutation",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def mutation(ch):\n    for i in range(len(ch)):\n        if np.random.rand() < MUTATION_RATE:\n            ch[i] = 1 - ch[i]\n    return ch\ndef run_ga(weights, profits, capacity):\n    n_items = len(weights)\n    pop = init_population(n_items)\n    best_fitness_per_gen = []\n    avg_fitness_per_gen = []",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "run_ga",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def run_ga(weights, profits, capacity):\n    n_items = len(weights)\n    pop = init_population(n_items)\n    best_fitness_per_gen = []\n    avg_fitness_per_gen = []\n    best_chrom = None\n    best_fit = -9999\n    progress_bar = st.progress(0)\n    status_text = st.empty()\n    for gen in range(GENERATIONS):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "load_sample_dataset",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def load_sample_dataset():\n    \"\"\"Membuat dataset sample berdasarkan contoh yang diberikan\"\"\"\n    data = {\n        'Weights': ['[46, 40, 42, 38, 10]'],\n        'Prices': ['[12, 19, 19, 15, 8]'],\n        'Capacity': [40],\n        'Best_picks': ['[0, 1, 0, 0, 0]'],\n        'Best_price': [19]\n    }\n    return pd.DataFrame(data)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "parse_array_string",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def parse_array_string(arr_str):\n    \"\"\"Mengubah string array menjadi list of integers\"\"\"\n    if isinstance(arr_str, str):\n        # Remove brackets and split by space or comma\n        arr_str = arr_str.replace('[', '').replace(']', '')\n        # Split by comma or space\n        elements = arr_str.replace(',', ' ').split()\n        return [int(x.strip()) for x in elements if x.strip()]\n    elif isinstance(arr_str, list):\n        return arr_str",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "safe_convert_to_int",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def safe_convert_to_int(value):\n    \"\"\"Mengkonversi value ke integer dengan aman\"\"\"\n    try:\n        if isinstance(value, (int, float, np.number)):\n            return int(value)\n        elif isinstance(value, str):\n            # Remove any non-numeric characters except minus\n            cleaned = ''.join(c for c in value if c.isdigit() or c == '-')\n            return int(cleaned) if cleaned else 0\n        else:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "detect_column_names",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def detect_column_names(df):\n    \"\"\"Mendeteksi nama kolom yang sesuai dalam dataset\"\"\"\n    column_mapping = {}\n    # Cari kolom weights\n    weight_candidates = ['Weights', 'weights', 'Weight', 'weight', 'w', 'W']\n    for col in df.columns:\n        for candidate in weight_candidates:\n            if candidate.lower() in col.lower():\n                column_mapping['weights'] = col\n                break",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "validate_and_clean_dataset",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def validate_and_clean_dataset(df, column_mapping):\n    \"\"\"Validasi dan bersihkan dataset\"\"\"\n    valid_rows = []\n    for idx, row in df.iterrows():\n        try:\n            # Parse weights dan prices\n            weights = parse_array_string(row[column_mapping['weights']])\n            prices = parse_array_string(row[column_mapping['prices']])\n            # Konversi capacity ke integer\n            capacity = safe_convert_to_int(row[column_mapping['capacity']])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "test_algorithm_performance",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def test_algorithm_performance(dataset):\n    \"\"\"Menguji performa algoritma GA pada dataset\"\"\"\n    results = []\n    # Deteksi nama kolom\n    column_mapping = detect_column_names(dataset)\n    st.write(\"**Kolom yang terdeteksi:**\", column_mapping)\n    # Validasi kolom yang diperlukan\n    required_columns = ['weights', 'prices', 'capacity']\n    missing_columns = [col for col in required_columns if col not in column_mapping]\n    if missing_columns:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "display_results",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def display_results(best_chrom, best_fit, best_list, avg_list, weights, profits, capacity):\n    st.markdown('<div class=\"sub-header\">Hasil Optimasi</div>', unsafe_allow_html=True)\n    total_weight = np.sum(best_chrom * weights)\n    total_profit = np.sum(best_chrom * profits)\n    selected_items = np.sum(best_chrom)\n    efficiency = (total_weight / capacity) * 100 if capacity > 0 else 0\n    col1, col2, col3, col4 = st.columns(4)\n    with col1:\n        st.metric(\"Total Profit\", f\"Rp {total_profit:,}\")\n    with col2:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "POP_SIZE",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "POP_SIZE = 50\nCROSSOVER_RATE = 0.8\nMUTATION_RATE = 0.1\nGENERATIONS = 100\nTOURNAMENT_SIZE = 2\n# ============================\n# GA FUNCTIONS (TIDAK DIUBAH)\n# ============================\ndef fitness(chrom, weights, profits, capacity):\n    total_w = np.sum(chrom * weights)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "CROSSOVER_RATE",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "CROSSOVER_RATE = 0.8\nMUTATION_RATE = 0.1\nGENERATIONS = 100\nTOURNAMENT_SIZE = 2\n# ============================\n# GA FUNCTIONS (TIDAK DIUBAH)\n# ============================\ndef fitness(chrom, weights, profits, capacity):\n    total_w = np.sum(chrom * weights)\n    total_p = np.sum(chrom * profits)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "MUTATION_RATE",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "MUTATION_RATE = 0.1\nGENERATIONS = 100\nTOURNAMENT_SIZE = 2\n# ============================\n# GA FUNCTIONS (TIDAK DIUBAH)\n# ============================\ndef fitness(chrom, weights, profits, capacity):\n    total_w = np.sum(chrom * weights)\n    total_p = np.sum(chrom * profits)\n    if total_w <= capacity:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "GENERATIONS",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "GENERATIONS = 100\nTOURNAMENT_SIZE = 2\n# ============================\n# GA FUNCTIONS (TIDAK DIUBAH)\n# ============================\ndef fitness(chrom, weights, profits, capacity):\n    total_w = np.sum(chrom * weights)\n    total_p = np.sum(chrom * profits)\n    if total_w <= capacity:\n        return total_p",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "TOURNAMENT_SIZE",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "TOURNAMENT_SIZE = 2\n# ============================\n# GA FUNCTIONS (TIDAK DIUBAH)\n# ============================\ndef fitness(chrom, weights, profits, capacity):\n    total_w = np.sum(chrom * weights)\n    total_p = np.sum(chrom * profits)\n    if total_w <= capacity:\n        return total_p\n    else:",
+        "detail": "app",
+        "documentation": {}
+    }
+]
